@@ -1,0 +1,142 @@
+create 15 x 6 2d array // let top left tile be (0, 0)
+create vectors of coordinates named zonetransition, hallway, 3way, 4way, endcap, corners
+
+
+place tile of type room173 at (7, 5)
+
+
+roll 1d3 +2 for number of zone transitions
+generate that number of random numbers in range 0 to 14, difference between each number must be >1
+generate start index offset in range 0 to (14 - max of those numbers)
+foreach (number)
+{
+	place tile of type zone transition at (offset + number, 0)
+	place coordinate into zontransition vector
+}
+
+
+roll 2d3 -1 for number of side halls
+generate that number of random numbers in range 1 to 13, difference between each number must be >1
+generate start index offset in range 0 to (13 - max of those numbers)
+foreach (number)
+{
+	place tiles of type hallway at (offset + number, 2) and (offset + number, 3)
+	places coordinates into hallway vector
+}
+
+
+generate start index of top hall in range 0 to min of zone transition indices
+generate stop index of top hall in range max of zone transition indices to 14
+for (i in range start index to stop index)
+{
+	if (i is max or min of range)
+	{
+		if no tile above and no tile below tiletype = endcap
+		elif tile above xor tile below tiletype = corner
+		elif tile above and tile below tiletype = 3way
+	}
+	else
+	{
+		if no tile above and no tile below tiletype = hallway
+		elif tile above xor tile below tiletype = 3way
+		elif tile above and tile below tiletype = 4way		
+	}
+	place tiletype at (i, 1)
+	place coordinate into appropriate vector	
+}
+
+
+generate start index of bottom hall in range 0 to min of side hall indices
+generate stop index of bottom hall in range max of side hall indices to 14
+for (j in range start index to stop index)
+{
+	if (j is max or min of range)
+	{
+		if no tile above and no tile below 
+			tiletype = endcap
+		elif tile above xor tile below 
+			tiletype = corner
+		elif tile above and tile below 
+			tiletype = 3way
+	}
+	else
+	{
+		if no tile above and no tile below 
+			tiletype = hallway
+		elif tile above xor tile below 
+			tiletype = 3way
+		elif tile above and tile below 
+			tiletype = 4way		
+	}
+	place tiletype at (j, 4)
+	place coordinate into appropriate vector	
+}
+
+
+for (number of endcap rooms that need to be placed - number of endcaps in vector)
+{
+	bool foundtile = false
+	while (!foundtile)
+	{
+		randtile = choose random coordinate from hallway vector or 3way vector
+		possibletile = find empty tile adjacent to that one
+		if all tiles surrounding that one are empty excepting the original coordinate 
+			foundtile = true
+		
+		if foundtile.y == 0 or foundtile.y == 5
+			foundtile = false
+	}
+	place tile of type endcap at possibletile
+	if randtile is hallway
+		place tile of type 3way at randtile
+		remove from hallway vector
+		add to 3way vector
+	else
+		place tile of type 4way at randtile
+		remove from 3way vector
+		add to 4way vector
+}
+
+
+foreach (required endcap to be placed)
+{
+	choose random endcap tile
+	place tile of required type at that location
+	remove from vector
+}
+
+
+foreach (required hallway to be placed)
+{
+	choose random hallway tile
+	place tile of required type at that location
+	remove from vector
+}
+
+
+foreach (required corner to be placed)
+{
+	// it's possible that no corners spawned
+	// do a search and replace like for endcaps?
+	choose random corner tile
+	place tile of required type at that location
+	remove from vector
+}
+
+
+foreach (required 3way to be placed)
+{
+	choose random 3way tile
+	place tile of required type at that location
+	remove from vector
+}
+
+
+foreach (required 4way to be placed)
+{
+	choose random 4way tile
+	place tile of required type at that location
+	remove from vector
+}
+
+return 2d array

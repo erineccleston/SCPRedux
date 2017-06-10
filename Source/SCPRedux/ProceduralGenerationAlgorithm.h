@@ -33,11 +33,28 @@ public:
 private:
 	FRandomStream Rand;
 
-	int32** GenArray();
+	TArray<TArray<int32>> GenArray();
+
+	void GenerateBaseMap();
+
+	TArray<FTileStruct> PackageMap();
+
+	TArray<TArray<int32>> map;
 	
 	FVector CoordToFVector(int32 x, int32 y);
 
 	TArray<int32> RequiredEndcaps, RequiredHallways, RequiredCorners, Required3Ways, Required4Ways;
 
 	void Init();
+
+	int32 Max(TArray<int32> arr);
+
+	int32 Min(TArray<int32> arr);
+
+	class OrderedPair
+	{
+	public:
+		OrderedPair(int32 inx, int32 iny) { x = inx; y = iny; }
+		int32 x, y;
+	};
 };

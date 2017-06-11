@@ -6,6 +6,20 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "ProceduralGenerationAlgorithm.generated.h"
 
+UENUM(BlueprintType)
+enum class ERoomType : uint8
+{
+	None,// 	UMETA(DisplayName = "Dance"),
+	GenericEndcap,// 	UMETA(DisplayName = "Rain"),
+	GenericHallway,//	UMETA(DisplayName = "Song")
+	GenericCorner,
+	GenericThreeway,
+	GenericFourway,
+	ZoneTransitionLight,
+	ZoneTransitionEntrance,
+	Room173
+};
+
 USTRUCT(BlueprintType)
 struct FTileStruct
 {
@@ -18,7 +32,7 @@ struct FTileStruct
 	FRotator Rotation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tile Struct")
-	int32 Type;
+	ERoomType Type;
 };
 
 /**
@@ -37,30 +51,32 @@ public:
 	FRandomStream Rand;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
-	TArray<int32> RequiredEndcaps;
+	TArray<ERoomType> RequiredEndcaps;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
-	TArray<int32> RequiredHallways;
+	TArray<ERoomType> RequiredHallways;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
-	TArray<int32> RequiredCorners;
+	TArray<ERoomType> RequiredCorners;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
-	TArray<int32> Required3Ways;
+	TArray<ERoomType> Required3Ways;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
-	TArray<int32> Required4Ways;
+	TArray<ERoomType> Required4Ways;
 
 private:
-	TArray<TArray<int32>> map;
+	TArray<TArray<ERoomType>> map;
 
-	void AddEndcaps();
 	void GenerateBaseMap();
+	void AddEndcaps();
+	void ReplaceGenerics();
+
 	TArray<FTileStruct> PackageMap();
 
 	int32 Max(TArray<int32> arr);
 	int32 Min(TArray<int32> arr);
 
-	TArray<FVector2D> FindAll(int32 type);
+	TArray<FVector2D> FindAll(ERoomType type);
 	FVector CoordToFVector(int32 x, int32 y);
 };

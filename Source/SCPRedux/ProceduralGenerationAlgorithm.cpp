@@ -18,7 +18,7 @@ TArray<FTileStruct> UProceduralGenerationAlgorithm::PackageMap()
 	{
 		for (int32 y = 0; y < 6; y++)
 		{
-			if (map[x][y] != 0)
+			if (map[x][y] != ERoomType::None)
 			{
 				FTileStruct tile;
 				tile.Location = CoordToFVector(x, y);
@@ -40,11 +40,11 @@ void UProceduralGenerationAlgorithm::GenerateBaseMap()
 		map[x].SetNum(6);
 		for (int32 y = 0; y < 6; y++)
 		{
-			map[x][y] = 0;
+			map[x][y] = ERoomType::None;
 		}
 	}
 
-	map[7][5] = 173;
+	map[7][5] = ERoomType::Room173;
 
 	// Generate zone transition tiles
 
@@ -71,7 +71,7 @@ void UProceduralGenerationAlgorithm::GenerateBaseMap()
 
 	for (auto& num : ztPositions)
 	{
-		map[ztOffset + num][0] = 6;
+		map[ztOffset + num][0] = ERoomType::ZoneTransitionLight;
 	}
 
 	// Generate side hall tiles
@@ -99,8 +99,8 @@ void UProceduralGenerationAlgorithm::GenerateBaseMap()
 
 	for (auto& num : shPositions)
 	{
-		map[shOffset + num][2] = 2;
-		map[shOffset + num][3] = 2;
+		map[shOffset + num][2] = ERoomType::GenericHallway;
+		map[shOffset + num][3] = ERoomType::GenericHallway;
 	}
 
 	// Generate top hall tiles
@@ -110,25 +110,25 @@ void UProceduralGenerationAlgorithm::GenerateBaseMap()
 
 	for (int32 i = thStart; i <= thEnd; i++)
 	{
-		int32 tileType;
+		ERoomType tileType;
 
 		if (i == thStart || i == thEnd)
 		{
-			if (map[i][0] == 0 && map[i][2] == 0)
-				tileType = 1;
-			else if (map[i][0] != 0 && map[i][2] != 0)
-				tileType = 3;
+			if (map[i][0] == ERoomType::None && map[i][2] == ERoomType::None)
+				tileType = ERoomType::GenericEndcap;
+			else if (map[i][0] != ERoomType::None && map[i][2] != ERoomType::None)
+				tileType = ERoomType::GenericThreeway;
 			else
-				tileType = 5;
+				tileType = ERoomType::GenericCorner;
 		}
 		else
 		{
-			if (map[i][0] == 0 && map[i][2] == 0)
-				tileType = 2;
-			else if (map[i][0] != 0 && map[i][2] != 0)
-				tileType = 4;
+			if (map[i][0] == ERoomType::None && map[i][2] == ERoomType::None)
+				tileType = ERoomType::GenericHallway;
+			else if (map[i][0] != ERoomType::None && map[i][2] != ERoomType::None)
+				tileType = ERoomType::GenericFourway;
 			else
-				tileType = 3;
+				tileType = ERoomType::GenericThreeway;
 		}
 
 		map[i][1] = tileType;
@@ -141,40 +141,36 @@ void UProceduralGenerationAlgorithm::GenerateBaseMap()
 
 	for (int32 i = bhStart; i <= bhEnd; i++)
 	{
-		int32 tileType;
+		ERoomType tileType;
 
 		if (i == bhStart || i == bhEnd)
 		{
-			if (map[i][3] == 0 && map[i][5] == 0)
-				tileType = 1;
-			else if (map[i][3] != 0 && map[i][5] != 0)
-				tileType = 3;
+			if (map[i][0] == ERoomType::None && map[i][2] == ERoomType::None)
+				tileType = ERoomType::GenericEndcap;
+			else if (map[i][0] != ERoomType::None && map[i][2] != ERoomType::None)
+				tileType = ERoomType::GenericThreeway;
 			else
-				tileType = 5;
+				tileType = ERoomType::GenericCorner;
 		}
 		else
 		{
-			if (map[i][3] == 0 && map[i][5] == 0)
-				tileType = 2;
-			else if (map[i][3] != 0 && map[i][5] != 0)
-				tileType = 4;
+			if (map[i][0] == ERoomType::None && map[i][2] == ERoomType::None)
+				tileType = ERoomType::GenericHallway;
+			else if (map[i][0] != ERoomType::None && map[i][2] != ERoomType::None)
+				tileType = ERoomType::GenericFourway;
 			else
-				tileType = 3;
+				tileType = ERoomType::GenericThreeway;
 		}
 
 		map[i][4] = tileType;
 	}
-
-	//UE_LOG(LogTemp, Warning, TEXT("zonetranscount %d ztoffset %d sidehallcount %d shoffset %d thstart %d thend %d bh start %d bhend %d "), zoneTransCount, ztOffset, sideHallCount, shOffset, thStart, thEnd, bhStart, bhEnd)
 }
 
 void UProceduralGenerationAlgorithm::AddEndcaps()
 {
-	TArray<FVector2D> endcaps   = FindAll(1);
-	TArray<FVector2D> halls     = FindAll(2);
-	TArray<FVector2D> threeways = FindAll(3);
-
-	// Create additional endcaps
+	TArray<FVector2D> endcaps   = FindAll(ERoomType::GenericEndcap);
+	TArray<FVector2D> halls     = FindAll(ERoomType::GenericHallway);
+	TArray<FVector2D> threeways = FindAll(ERoomType::GenericThreeway);
 
 	for (int32 i = 0; i < RequiredEndcaps.Num() - endcaps.Num(); i++)
 	{
@@ -200,7 +196,6 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 				y = threeways[randIndex2].Y;
 			}
 
-			//OrderedPair randTile(x, y);
 			superx = x;
 			supery = y;
 
@@ -222,96 +217,90 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 			}
 
 			bool cont = false;
-			if (map[x][y] == 0)
+			if (map[x][y] == ERoomType::None)
 				cont = true;
 
 			if (cont)
 			{
-				//OrderedPair possibleTile(x, y);
-
 				int32 spaces = 0;
 
 				if (!(x == 0 || y == 0))
 				{
-					if (map[x - 1][y - 1] == 0)
+					if (map[x - 1][y - 1] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (!(x == 0))
 				{
-					if (map[x - 1][y] == 0)
+					if (map[x - 1][y] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (!(x == 0 || y == 5))
 				{
-					if (map[x - 1][y + 1] == 0)
+					if (map[x - 1][y + 1] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (!(y == 0))
 				{
-					if (map[x][y - 1] == 0)
+					if (map[x][y - 1] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (!(y == 5))
 				{
-					if (map[x][y + 1] == 0)
+					if (map[x][y + 1] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (!(x == 14 || y == 0))
 				{
-					if (map[x + 1][y - 1] == 0)
+					if (map[x + 1][y - 1] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (!(x == 14))
 				{
-					if (map[x + 1][y] == 0)
+					if (map[x + 1][y] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (!(x == 14 || y == 5))
 				{
-					if (map[x + 1][y + 1] == 0)
+					if (map[x + 1][y + 1] == ERoomType::None)
 						spaces++;
 				}
 				else { spaces++; }
 
 				if (spaces == 5 && !(y == 0 || y == 5))
 				{
-					map[x][y] = 1;
+					map[x][y] = ERoomType::GenericEndcap;
 					foundTile = true;
-					//endcaps.Push(possibleTile);
 				}
 			}
 		}
 
-		if (map[superx][supery] == 2)
+		if (map[superx][supery] == ERoomType::GenericHallway)
 		{
-			map[superx][supery] = 3;
-			//remove from halls
-			//add to threeways
+			map[superx][supery] = ERoomType::GenericThreeway;
 		}
 		else
 		{
-			map[superx][supery] = 4;
-			//remove from threeways
-			//add to fourways
+			map[superx][supery] = ERoomType::GenericFourway;
 		}
 	}
+}
 
-	// Replace generic tiles with required tiles
-
+void UProceduralGenerationAlgorithm::ReplaceGenerics()
+{
 	//for (auto& num : RequiredEndcaps)
 	//{
 	//	int32 index = Rand.RandRange(0, endcaps.Num());
@@ -349,7 +338,7 @@ int32 UProceduralGenerationAlgorithm::Min(TArray<int32> arr)
 	return min;
 }
 
-TArray<FVector2D> UProceduralGenerationAlgorithm::FindAll(int32 type)
+TArray<FVector2D> UProceduralGenerationAlgorithm::FindAll(ERoomType type)
 {
 	TArray<FVector2D> arr;
 

@@ -9,15 +9,30 @@
 UENUM(BlueprintType)
 enum class ERoomType : uint8
 {
-	None,// 	UMETA(DisplayName = "Dance"),
-	GenericEndcap,// 	UMETA(DisplayName = "Rain"),
-	GenericHallway,//	UMETA(DisplayName = "Song")
+	None,
+	GenericEndcap,
+	GenericHallway,
 	GenericCorner,
 	GenericThreeway,
 	GenericFourway,
 	ZoneTransitionLight,
 	ZoneTransitionEntrance,
-	Room173
+	Room173,
+	End178,
+	End205,
+	End372,
+	End914,
+	EndArchives,
+	Hall012,
+	Hall970,
+	Hall1123,
+	Hall1499,
+	HallStoreroom,
+	HallTesting,
+	HallSurveillance,
+	HallSCPs,
+	Corner1162,
+	TW939
 };
 
 USTRUCT(BlueprintType)
@@ -35,8 +50,8 @@ struct FTileStruct
 	ERoomType Type;
 };
 
-/**
- * Generates locations for game tiles. Assumes map size and tile size.
+/*
+ * Generates locations for game tiles. Assumes map dimensions and tile size. Limitation: Won't place required tiles if there's no generic for replacement, so order of the input arrays matters. Array elements at the end will be ignored if there's no room. This affects corner tiles the most.
  */
 UCLASS()
 class SCPREDUX_API UProceduralGenerationAlgorithm : public UObject
@@ -60,10 +75,10 @@ public:
 	TArray<ERoomType> RequiredCorners;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
-	TArray<ERoomType> Required3Ways;
+	TArray<ERoomType> RequiredThreeways;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
-	TArray<ERoomType> Required4Ways;
+	TArray<ERoomType> RequiredFourways;
 
 private:
 	TArray<TArray<ERoomType>> map;

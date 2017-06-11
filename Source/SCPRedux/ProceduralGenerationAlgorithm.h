@@ -15,46 +15,52 @@ struct FTileStruct
 	FVector Location;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tile Struct")
+	FRotator Rotation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tile Struct")
 	int32 Type;
 };
 
 /**
- * Generates locations for game tiles. Assumes 2050 tile size. Does not deal with rotation.
+ * Generates locations for game tiles. Assumes map size and tile size.
  */
 UCLASS()
-class SCPREDUX_API UProceduralGenerationAlgorithm : public UBlueprintFunctionLibrary
+class SCPREDUX_API UProceduralGenerationAlgorithm : public UObject
 {
 	GENERATED_BODY()
 	
 public:
 	UFUNCTION(BlueprintCallable)
-	TArray<FTileStruct> GenerateTiles(int32 Seed);
+	TArray<FTileStruct> GenerateTiles();
 
-private:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
 	FRandomStream Rand;
 
-	TArray<TArray<int32>> GenArray();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
+	TArray<int32> RequiredEndcaps;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
+	TArray<int32> RequiredHallways;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
+	TArray<int32> RequiredCorners;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
+	TArray<int32> Required3Ways;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn))
+	TArray<int32> Required4Ways;
+
+private:
+	TArray<TArray<int32>> map;
+
+	void AddEndcaps();
 	void GenerateBaseMap();
-
 	TArray<FTileStruct> PackageMap();
 
-	TArray<TArray<int32>> map;
-	
-	FVector CoordToFVector(int32 x, int32 y);
-
-	TArray<int32> RequiredEndcaps, RequiredHallways, RequiredCorners, Required3Ways, Required4Ways;
-
-	void Init();
-
 	int32 Max(TArray<int32> arr);
-
 	int32 Min(TArray<int32> arr);
 
-	class OrderedPair
-	{
-	public:
-		OrderedPair(int32 inx, int32 iny) { x = inx; y = iny; }
-		int32 x, y;
-	};
+	TArray<FVector2D> FindAll(int32 type);
+	FVector CoordToFVector(int32 x, int32 y);
 };

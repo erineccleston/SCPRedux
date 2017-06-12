@@ -1,0 +1,69 @@
+[img]https://68.media.tumblr.com/c65f4ae0986287d15db3d2216e2c96ef/tumblr_orfarjtkhQ1w9l4eio1_1280.png[/img]
+
+Welcome to the SCP Unreal Redux official thread. Yes, that's right, yet another fing port!
+
+[size=200]Development[/size]
+
+The initial goal of this project is to create a 1:1 port of Containment Breach into the Unreal Engine. Same rooms, same gameplay, same AI, same look and feel.
+Differences will come from a feature having a bad difficulty-to-reward ratio, fixing glaring errors from the original, or features inherent to using a modern game engine (lighting and shadows, no MAVs, 'instant' load times).
+
+Once that is accomplished the goal will split into two branches, which may or may not get equal attention depending on the circumstances at that point in time.
+One branch will stay true to the original game and try to stay as up to date as possible with it. (This is in order to facilitate modding, or possibly even development by the actual team should they feel like learning UE4.)
+The other branch will go in another direction, implementing gameplay changes, balancing, visual enhancements, and virtually any other type of improvement independent of the direction of the original game.
+I personally hope this could turn into a community project of sorts, given how easy UE4 development is.
+
+[size=150]Pre-Alpha (Current stage)[/size]
+Converting and importing assets, developing workflows, developing basic architectures.
+[size=150]Alpha (ETA: Start of July)[/size]
+All workflows developed, all basic architectures developed, working on building the game from a shell into something recognizable as Containment Breach.
+[size=150]Beta (ETA: August)[/size]
+All gameplay features exist in at least some basic form. Game is playable and enjoyable even though there are unfinished features.
+[size=150]Release (ETA: Eventually)[/size]
+'Everything' is done, no major bugs, progressively improving the game beyond the original mechanics.
+
+But let's not get ahead of ourselves...
+
+[size=150]"Finished" Features[/size]
+[spoiler]Player movement
+Blinking
+Fog
+Doors[/spoiler]
+[size=150]In-Progress Features
+[/size][spoiler]Procedural Light Containment Zone
+Items
+Inventory
+Old rooms
+Menus[/spoiler]
+[size=150]Upcoming Features[/size]
+[spoiler]Lighting
+MOBs
+Ambient sounds
+Room scripts
+Heavy/Entrance Zones
+Actual gameplay
+Updated rooms
+Alternate dimensions[/spoiler]
+[size=150]Planned Features[/size]
+[spoiler]Better textures
+New human models
+Better animations
+Game balancing[/spoiler]
+[size=150]Abandoned Features[/size]
+[spoiler]None yet[/spoiler]
+
+[size=200]Download[/size]
+[url=http://gamejolt.com/games/SCPUnreal/259576][img]https://s.gjcdn.net/assets/game-jolt-logo.07949d-2.svg[/img][/url]
+[size=150]Current version[/size]
+0.2.0
+[size=150]New Features[/size]
+Doors and buttons, inventory, working items (keycards and gasmasks), a few rooms.
+
+[size=200]Links[/size]
+Feel free to contact us whenever. We love company, especially if they're offering help ;)
+[size=150][url=https://discord.gg/KjUuzNV][color=#FF8000]Discord[/color][/url]
+[url=https://www.patreon.com/ParagonAM][color=#FF8000]Patreon[/color][/url]
+[url=https://paragon-am.tumblr.com/][color=#FF8000]Tumblr[/color][/url]
+[url=https://twitter.com/erin_pone][color=#FF8000]Twitter[/color][/url][/size]
+
+[size=200]Videos[/size]
+[spoiler][youtube]pwTfwi6PONE[/youtube][/spoiler]

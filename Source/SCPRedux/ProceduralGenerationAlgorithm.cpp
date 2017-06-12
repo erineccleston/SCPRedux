@@ -6,6 +6,7 @@ TArray<FTileStruct> UProceduralGenerationAlgorithm::GenerateTiles()
 {
 	GenerateBaseMap();
 	AddEndcaps();
+	DetermineRotations();
 	ReplaceGenerics();
 
 	return PackageMap(); 
@@ -23,7 +24,7 @@ TArray<FTileStruct> UProceduralGenerationAlgorithm::PackageMap()
 			{
 				FTileStruct tile;
 				tile.Location = CoordToFVector(x, y);
-				tile.Rotation = FRotator();
+				tile.Rotation = rotMap[x][y];
 				tile.Type = map[x][y];
 				arr.Push(tile);
 			}
@@ -36,12 +37,15 @@ TArray<FTileStruct> UProceduralGenerationAlgorithm::PackageMap()
 void UProceduralGenerationAlgorithm::GenerateBaseMap()
 {
 	map.SetNum(15);
+	rotMap.SetNum(15);
 	for (int32 x = 0; x < 15; x++)
 	{
 		map[x].SetNum(6);
+		rotMap[x].SetNum(6);
 		for (int32 y = 0; y < 6; y++)
 		{
 			map[x][y] = ERoomType::None;
+			rotMap[x][y] = FRotator(0, 0, 0);
 		}
 	}
 
@@ -301,6 +305,76 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 			{
 				map[superx][supery] = ERoomType::GenericFourway;
 			}
+		}
+	}
+}
+
+void UProceduralGenerationAlgorithm::DetermineRotations()
+{
+	FRotator up(0, 0, 0);
+	FRotator down(0, 180, 0);
+	FRotator left(0, -90, 0);
+	FRotator right(0, 90, 0);
+
+	for (int32 x = 0; x < 15; x++)
+	{
+		for (int32 y = 0; y < 6; y++)
+		{
+			FRotator local;
+
+			switch (map[x][y])
+			{
+			case ERoomType::GenericEndcap:
+				if (x < 14 && map[x + 1][y] != ERoomType::None)
+					local = right;
+				else if (x > 0 && map[x - 1][y] != ERoomType::None)
+					local = left;
+				else if (y < 5 && map[x][y + 1] != ERoomType::None)
+					local = down;
+				else if (y > 0 && map[x][y - 1] != ERoomType::None)
+					local = up;
+				break;
+			case ERoomType::GenericHallway:
+				if (map[x + 1][y] == ERoomType::None)
+					local = FRotator(0, Rand.RandRange(0, 1) * 180, 0);
+				else
+					local = FRotator(0, 90 + Rand.RandRange(0, 1) * 180, 0);
+				break;
+			case ERoomType::GenericCorner:
+				if (x < 14 && map[x + 1][y] != ERoomType::None)
+				{
+					if (y < 5 && map[x][y + 1] != ERoomType::None)
+						local = down;
+					else
+						local = right;
+				}
+				else
+				{
+					if (y > 0 && map[x][y - 1] != ERoomType::None)
+						local = up;
+					else
+						local = left;
+				}
+				break;
+			case ERoomType::GenericThreeway:
+				if (map[x + 1][y] == ERoomType::None)
+					local = left;
+				else if (map[x - 1][y] == ERoomType::None)
+					local = right;
+				else if(map[x][y + 1] == ERoomType::None)
+					local = up;
+				else if(map[x][y - 1] == ERoomType::None)
+					local = down;
+				break;
+			case ERoomType::GenericFourway:
+				local = FRotator(0, Rand.RandRange(0, 3) * 90, 0);
+				break;
+			default:
+				local = up;
+				break;
+			}
+
+			rotMap[x][y] = local;
 		}
 	}
 }

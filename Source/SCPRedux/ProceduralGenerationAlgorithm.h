@@ -82,9 +82,11 @@ public:
 
 private:
 	TArray<TArray<ERoomType>> map;
+	TArray<TArray<FRotator>> rotMap;
 
 	void GenerateBaseMap();
 	void AddEndcaps();
+	void DetermineRotations();
 	void ReplaceGenerics();
 
 	TArray<FTileStruct> PackageMap();

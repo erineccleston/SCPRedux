@@ -81,7 +81,7 @@ void UProceduralGenerationAlgorithm::GenerateBaseMap()
 
 	// Generate side hall tiles
 
-	int32 sideHallCount = Rand.RandRange(1, 3) + Rand.RandRange(1, 3) - 1;
+	int32 sideHallCount = Rand.RandRange(2, 4); //Rand.RandRange(1, 3) + Rand.RandRange(1, 3) - 1;
 
 	TArray<int32> shPositions;
 	for (int32 i = 0; i < sideHallCount; i++)
@@ -144,6 +144,11 @@ void UProceduralGenerationAlgorithm::GenerateBaseMap()
 	int32 bhStart = Rand.RandRange(0, Min(shPositions) + shOffset);
 	int32 bhEnd = Rand.RandRange(Max(shPositions) + shOffset, 14);
 
+	if (bhStart > 7)
+		bhStart = 7;
+	if (bhEnd < 7)
+		bhEnd = 7;
+
 	for (int32 i = bhStart; i <= bhEnd; i++)
 	{
 		ERoomType tileType;
@@ -178,7 +183,7 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 	TArray<FVector2D> threeways = FindAll(ERoomType::GenericThreeway);
 
 	int32 timeout = 0;
-	for (int32 i = 0; i < RequiredEndcaps.Num() - endcaps.Num(); i++)
+	for (int32 i = 0; i < RequiredEndcaps.Num() - endcaps.Num() + Rand.RandRange(0, 2); i++)
 	{
 		bool foundTile = false;
 		int32 superx = 0;
@@ -301,7 +306,7 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 			{
 				map[superx][supery] = ERoomType::GenericThreeway;
 			}
-			else
+			else if(map[superx][supery] == ERoomType::GenericThreeway)
 			{
 				map[superx][supery] = ERoomType::GenericFourway;
 			}
@@ -395,6 +400,11 @@ void UProceduralGenerationAlgorithm::ReplaceGenerics()
 			map[endcaps[index].X][endcaps[index].Y] = room;
 			endcaps.RemoveAt(index);
 		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Unable to place all required endcaps. Seed: %d"), Rand.GetCurrentSeed());
+			break;
+		}
 	}
 
 	for (auto& room : RequiredHallways)
@@ -404,6 +414,11 @@ void UProceduralGenerationAlgorithm::ReplaceGenerics()
 			int32 index = Rand.RandRange(0, halls.Num() - 1);
 			map[halls[index].X][halls[index].Y] = room;
 			halls.RemoveAt(index);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Unable to place all required hallways. Seed: %d"), Rand.GetCurrentSeed());
+			break;
 		}
 	}
 
@@ -415,6 +430,11 @@ void UProceduralGenerationAlgorithm::ReplaceGenerics()
 			map[corners[index].X][corners[index].Y] = room;
 			corners.RemoveAt(index);
 		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Unable to place all required corners. Seed: %d"), Rand.GetCurrentSeed());
+			break;
+		}
 	}
 
 	for (auto& room : RequiredThreeways)
@@ -425,6 +445,11 @@ void UProceduralGenerationAlgorithm::ReplaceGenerics()
 			map[threeways[index].X][threeways[index].Y] = room;
 			threeways.RemoveAt(index);
 		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Unable to place all required threeways. Seed: %d"), Rand.GetCurrentSeed());
+			break;
+		}
 	}
 
 	for (auto& room : RequiredFourways)
@@ -434,6 +459,11 @@ void UProceduralGenerationAlgorithm::ReplaceGenerics()
 			int32 index = Rand.RandRange(0, fourways.Num() - 1);
 			map[fourways[index].X][fourways[index].Y] = room;
 			fourways.RemoveAt(index);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Unable to place all required fourways. Seed: %d"), Rand.GetCurrentSeed());
+			break;
 		}
 	}
 }
@@ -481,7 +511,7 @@ TArray<FVector2D> UProceduralGenerationAlgorithm::FindAll(ERoomType type)
 
 FVector UProceduralGenerationAlgorithm::CoordToFVector(int32 x, int32 y)
 {
-	float vecx = (x - 7) * 2050;
-	float vecy = (y - 4) * 2050;
+	float vecx = (x - 7) * 2048;
+	float vecy = (y - 4) * 2048;
 	return FVector(vecx, vecy, 0.0f);
 }

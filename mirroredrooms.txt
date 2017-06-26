@@ -1,0 +1,17 @@
+machineroom
+medibay
+room035
+room106
+room1162
+room2_4
+room2cafeteria
+room2nuke
+room2poffices
+room2servers
+room2shaft
+room2sroom
+room2testroom2
+room3offices
+roompj
+
+any of the near symmetric rooms or ones I'm not familiar with

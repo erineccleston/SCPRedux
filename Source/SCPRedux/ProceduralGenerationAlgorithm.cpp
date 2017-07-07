@@ -183,7 +183,7 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 	TArray<FVector2D> threeways = FindAll(ERoomType::GenericThreeway);
 
 	int32 timeout = 0;
-	for (int32 i = 0; i < RequiredEndcaps.Num() - endcaps.Num() + Rand.RandRange(0, 2); i++)
+	for (int32 i = 0; i < RequiredEndcaps.Num() - endcaps.Num(); i++)
 	{
 		bool foundTile = false;
 		int32 superx = 0;
@@ -235,12 +235,12 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 			{
 				int32 spaces = 0;
 
-				if (!(x == 0 || y == 0))
-				{
-					if (map[x - 1][y - 1] == ERoomType::None)
-						spaces++;
-				}
-				else { spaces++; }
+				//if (!(x == 0 || y == 0))
+				//{
+				//	if (map[x - 1][y - 1] == ERoomType::None)
+				//		spaces++;
+				//}
+				//else { spaces++; }
 
 				if (!(x == 0))
 				{
@@ -249,12 +249,12 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 				}
 				else { spaces++; }
 
-				if (!(x == 0 || y == 5))
-				{
-					if (map[x - 1][y + 1] == ERoomType::None)
-						spaces++;
-				}
-				else { spaces++; }
+				//if (!(x == 0 || y == 5))
+				//{
+				//	if (map[x - 1][y + 1] == ERoomType::None)
+				//		spaces++;
+				//}
+				//else { spaces++; }
 
 				if (!(y == 0))
 				{
@@ -270,12 +270,12 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 				}
 				else { spaces++; }
 
-				if (!(x == 14 || y == 0))
-				{
-					if (map[x + 1][y - 1] == ERoomType::None)
-						spaces++;
-				}
-				else { spaces++; }
+				//if (!(x == 14 || y == 0))
+				//{
+				//	if (map[x + 1][y - 1] == ERoomType::None)
+				//		spaces++;
+				//}
+				//else { spaces++; }
 
 				if (!(x == 14))
 				{
@@ -284,14 +284,14 @@ void UProceduralGenerationAlgorithm::AddEndcaps()
 				}
 				else { spaces++; }
 
-				if (!(x == 14 || y == 5))
-				{
-					if (map[x + 1][y + 1] == ERoomType::None)
-						spaces++;
-				}
-				else { spaces++; }
+				//if (!(x == 14 || y == 5))
+				//{
+				//	if (map[x + 1][y + 1] == ERoomType::None)
+				//		spaces++;
+				//}
+				//else { spaces++; }
 
-				if (spaces == 5 && !(y == 0 || y == 5))
+				if (spaces == 3 && !(y == 0 || y == 5))
 				{
 					map[x][y] = ERoomType::GenericEndcap;
 					foundTile = true;

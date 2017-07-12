@@ -6,13 +6,19 @@
 	- ErinPone
 
 
-**** CREDITS FOR ORIGINAL ASSETS *************************
+**** CREDITS FOR NEW ASSETS *****************************
 
 	ErinPone
-		Everything else
+		Nearly everything not listed below.
+
+	EternalError
+		SCP-330 related assets.
+
+	SCP-330 is based on "SCP-330 - Take Only Two" by "Dr Kondraki" (http://www.scp-wiki.net/scp-330)
+	SCP-523 is based on "SCP-523 - The Most Unhelpful Object On Earth" by "Achalk" (http://www.scp-wiki.net/scp-523)
 
 
-**** CREDITS FOR BORROWED ASSETS *************************
+**** CREDITS FROM ORIGINAL GAME *************************
 
 
 	The game is based on the works of the SCP Foundation community (http://www.scp-wiki.net//).

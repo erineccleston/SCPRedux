@@ -1,0 +1,17 @@
+A problem has come to my attention that the .exe is causing false positives with Norton/Avast/Windows/etc antivirus software. I assure you that my game is not a virus and that these are false alarms.
+
+If you believe me, unblock or allow the file to run.
+
+For Windows, there's a button at the bottom left of the popup that says something like 'more info' and then will let you choose to run the program anyway.
+
+For Norton I found these instructions but I don't know if they work because I don't use Norton. 
+"Usually, Norton moves files and programs that are suspected security threats to somewhere called "Security History Quarantine". Quarantined items are placed there to isolate themselves from the safe ones in the operating system, and they can be returned to its previous location by following the path:
+
+Go to find "Advanced" option in your Norton program. Next, in the Computer Protection section, click "Quarantine" to open the Security History window. Now, you'll see all the quarantined files and programs, just right-click any one of them you want to recover. Go through the further steps.
+
+Click "Options" to open the Threat Detected window -> click the "Restore and Exclude This File" button to open the Quarantine Restore window -> Select the "Exclude This Risk From Future Scans" check box -> click "Yes" button and wait for Norton program to restore the wrongly deleted items to its previous location."
+
+I don't know what to do for Avast or any of the others.
+
+
+If you don't believe me, feel free to ignore this and hopefully the false positive will go away for future builds.

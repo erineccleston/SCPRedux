@@ -4,36 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Enumerations.h"
 #include "ProceduralGenerationAlgorithm.generated.h"
-
-UENUM(BlueprintType)
-enum class ERoomType : uint8
-{
-	None,
-	GenericEndcap,
-	GenericHallway,
-	GenericCorner,
-	GenericThreeway,
-	GenericFourway,
-	ZoneTransitionLight,
-	ZoneTransitionEntrance,
-	Room173,
-	End178,
-	End205,
-	End372,
-	End914,
-	EndArchives,
-	Hall012,
-	Hall970,
-	Hall1123,
-	Hall1499,
-	HallStoreroom,
-	HallTesting,
-	HallSurveillance,
-	HallSCPs,
-	Corner1162,
-	TW939
-};
 
 USTRUCT(BlueprintType)
 struct FTileStruct

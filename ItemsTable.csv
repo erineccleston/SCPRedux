@@ -1,0 +1,80 @@
+---,Name,UniformScale,Mesh,Icon,PickupSound
+NoItem,,1,None,None,None
+GasMask,Gas Mask,0.5,StaticMesh'/Game/SCP/ItemMeshes/gasmask.gasmask',Texture2D'/Game/SCP/ItemMeshes/Icons/INVgasmask.INVgasmask',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem2.PickItem2'
+SuperGasMask,Strange Gas Mask,0.5,None,None,None
+HeavyGasMask,Heavy Gas Mask,0.5,None,None,None
+Keycard1,Level 1 Keycard,1,StaticMesh'/Game/SCP/ItemMeshes/keycard1.keycard1',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkey1.INVkey1',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+Keycard2,Level 2 Keycard,1,StaticMesh'/Game/SCP/ItemMeshes/keycard2.keycard2',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkey2.INVkey2',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+Keycard3,Level 3 Keycard,1,StaticMesh'/Game/SCP/ItemMeshes/keycard3.keycard3',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkey3.INVkey3',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+Keycard4,Level 4 Keycard,1,StaticMesh'/Game/SCP/ItemMeshes/keycard4.keycard4',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkey4.INVkey4',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+Keycard5,Level 5 Keycard,1,StaticMesh'/Game/SCP/ItemMeshes/keycard5.keycard5',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkey5.INVkey5',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+Keycard6,Keycard Omni,1,StaticMesh'/Game/SCP/ItemMeshes/keycard6.keycard6',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkeyomni.INVkeyomni',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+FirstAidKit,First Aid Kit,1,StaticMesh'/Game/SCP/ItemMeshes/firstaid.firstaid',Texture2D'/Game/SCP/ItemMeshes/Icons/INVfirstaid.INVfirstaid',None
+SmallFirstAidKit,Strange First Aid Kit,0.5,StaticMesh'/Game/SCP/ItemMeshes/firstaid.firstaid',Texture2D'/Game/SCP/ItemMeshes/Icons/INVfirstaid.INVfirstaid',None
+BlueFirstAidKit,Strange First Aid Kit,1,StaticMesh'/Game/SCP/ItemMeshes/firstaid2.firstaid2',Texture2D'/Game/SCP/ItemMeshes/Icons/INVfirstaid2.INVfirstaid2',None
+StrangeBottle,Strange Bottle,1,None,None,None
+Syringe,Syringe,1,None,None,None
+FineSyringe,Strange Syringe,1,None,None,None
+VeryFineSyringe,Strange Syringe,1,None,None,None
+BallisticVest,Ballistic Vest,1,None,None,None
+HeavyBallisticVest,Heavy Ballistic Vest,1,None,None,None
+BulkyBallisticVest,,1,None,None,None
+SNav300,S-NAV 300,2,StaticMesh'/Game/SCP/ItemMeshes/navigator.navigator',Texture2D'/Game/SCP/ItemMeshes/Icons/INVnavigator.INVnavigator',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+SNav310,S-NAV 310,2,StaticMesh'/Game/SCP/ItemMeshes/navigator.navigator',Texture2D'/Game/SCP/ItemMeshes/Icons/INVnavigator.INVnavigator',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+SNavUltimate,S-NAV Ultimate,2,StaticMesh'/Game/SCP/ItemMeshes/navigator.navigator',Texture2D'/Game/SCP/ItemMeshes/Icons/INVnavigator.INVnavigator',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+HazmatSuit,Hazmat Suit,1,None,None,None
+HeavyHazmatSuit,Heavy Hazmat Suit,1,None,None,None
+MysteryHazmatSuit,Strange Hazmat Suit,1,None,None,None
+9VBattery,9-Volt Battery,2,StaticMesh'/Game/SCP/ItemMeshes/Battery9V.Battery9V',Texture2D'/Game/SCP/ItemMeshes/Icons/INVbattery9v.INVbattery9v',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+18VBattely,18-Volt Battery,2,StaticMesh'/Game/SCP/ItemMeshes/Battery18V.Battery18V',Texture2D'/Game/SCP/ItemMeshes/Icons/INVbattery18v.INVbattery18v',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+StrangeBattery,,1,None,None,None
+ReVisionEyedrops,ReVision Eyedrops,1,None,None,None
+RedVisionEyedrops,RedVision Eyedrops,1,None,None,None
+FineEyedrops,Strange Eyedrops,1,None,None,None
+VeryFineEyedrops,Strange Eyedrops,1,None,None,None
+WhiteSeveredHand,Severed Hand,1,StaticMesh'/Game/SCP/ItemMeshes/severedhand1.severedhand1',Texture2D'/Game/SCP/ItemMeshes/Icons/INVhand.INVhand',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem2.PickItem2'
+BlackSeveredHand,Severed Hand,1,StaticMesh'/Game/SCP/ItemMeshes/severedhand2.severedhand2',Texture2D'/Game/SCP/ItemMeshes/Icons/INVhand2.INVhand2',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem2.PickItem2'
+Clipboard,Clipboard,1,None,None,None
+NightVisionGoggles,Night Vision Goggles,1,StaticMesh'/Game/SCP/ItemMeshes/NVG.NVG',Texture2D'/Game/SCP/ItemMeshes/Icons/INVnightvision.INVnightvision',None
+FineNVG,Strange Night Vision Goggles,1,StaticMesh'/Game/SCP/ItemMeshes/NVG.NVG',Texture2D'/Game/SCP/ItemMeshes/Icons/INVsupernightvision.INVsupernightvision',None
+VeryFineNVG,Strange Night Vision Goggles,1,StaticMesh'/Game/SCP/ItemMeshes/NVG.NVG',Texture2D'/Game/SCP/ItemMeshes/Icons/INVveryfinenightvision.INVveryfinenightvision',None
+148Panel,SCP-148 Panel,1,None,None,None
+148Ingot,SCP-148 Ingot,1,None,None,None
+178Specs,SCP-178,0.8,StaticMesh'/Game/SCP/ItemMeshes/stereoglass.stereoglass',Texture2D'/Game/SCP/ItemMeshes/Icons/INV178.INV178',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+500Pill,SCP-500,1,None,None,None
+513Bell,SCP-513,1,None,None,None
+714Ring,SCP-714,1.5,StaticMesh'/Game/SCP/ItemMeshes/scp714.scp714',Texture2D'/Game/SCP/ItemMeshes/Icons/INV714.INV714',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem3.PickItem3'
+860Key,SCP-860,0.15,StaticMesh'/Game/SCP/ItemMeshes/key.key',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkey.INVkey',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem3.PickItem3'
+1025Book,SCP-1025,3,StaticMesh'/Game/SCP/ItemMeshes/scp1025.scp1025',Texture2D'/Game/SCP/ItemMeshes/Icons/INV1025.INV1025',None
+1162Coin,Coin,1,None,None,None
+1162Ticket,Movie Ticket,1,None,None,None
+1162Key,Lost Key,1,None,None,None
+1162Badge,Old Badge,1,None,None,None
+1499Mask,SCP-1499,1,None,None,None
+1499MaskFine,SCP-1499,1,None,None,None
+Cup,Cup,1,None,None,None
+420Blunt,SCP-420-J,1,None,None,None
+Joint,Joint,1,None,None,None
+SmellyJoint,Smelly Joint,1,None,None,None
+Cigarette,Cigarette,1,None,None,None
+MasterCard,MasterCard,1,StaticMesh'/Game/SCP/ItemMeshes/mastercard.mastercard',Texture2D'/Game/SCP/ItemMeshes/Icons/INVmastercard.INVmastercard',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+PlayingCard,Playing Card,1,StaticMesh'/Game/SCP/ItemMeshes/playingcard.playingcard',Texture2D'/Game/SCP/ItemMeshes/Icons/INVcard.INVcard',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+Origami,Origami,1,None,None,None
+EmilyBadge,Emily Ross's Badge,1,None,None,None
+Radio,Radio,1,None,None,None
+FineRadio,Strange Radio,1,None,None,None
+VeryFineRadio,Strange Radio,1,None,None,None
+18VRadio,18-Volt Radio,1,None,None,None
+Electronics,Electronics,1,None,None,None
+Decal,,1,None,None,None
+Script,,1,None,None,None
+Keycard0,Level 0 Keycard,1,StaticMesh'/Game/SCP/ItemMeshes/keycard0.keycard0',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkey0.INVkey0',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+523FakeCard,Keycard Omni,1,StaticMesh'/Game/SCP/ItemMeshes/keycard6.keycard6',Texture2D'/Game/SCP/ItemMeshes/Icons/INVkeyomni.INVkeyomni',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+RedCandy,Candy,1,StaticMesh'/Game/SCP/ItemMeshes/330candyred.330candyred',Texture2D'/Game/SCP/ItemMeshes/Icons/INVcandy1.INVcandy1',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem4.PickItem4'
+BlueCandy,Candy,1,StaticMesh'/Game/SCP/ItemMeshes/330candyblue.330candyblue',Texture2D'/Game/SCP/ItemMeshes/Icons/INVcandy2.INVcandy2',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem4.PickItem4'
+YellowCandy,Candy,1,StaticMesh'/Game/SCP/ItemMeshes/330candyyellow.330candyyellow',Texture2D'/Game/SCP/ItemMeshes/Icons/INVcandy3.INVcandy3',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem4.PickItem4'
+SuperRedCandy,Strange Candy,1,StaticMesh'/Game/SCP/ItemMeshes/330candyred.330candyred',Texture2D'/Game/SCP/ItemMeshes/Icons/INVcandy1.INVcandy1',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem4.PickItem4'
+SuperBlueCandy,Strange Candy,1,StaticMesh'/Game/SCP/ItemMeshes/330candyblue.330candyblue',Texture2D'/Game/SCP/ItemMeshes/Icons/INVcandy2.INVcandy2',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem4.PickItem4'
+SuperYellowCandy,Strange Candy,1,StaticMesh'/Game/SCP/ItemMeshes/330candyyellow.330candyyellow',Texture2D'/Game/SCP/ItemMeshes/Icons/INVcandy3.INVcandy3',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem4.PickItem4'
+KeycardS,Security Keycard,1,None,None,SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'
+SNavRed,S-NAV 300,2,StaticMesh'/Game/SCP/ItemMeshes/navigator.navigator',Texture2D'/Game/SCP/ItemMeshes/Icons/INVnavigator.INVnavigator',SoundWave'/Game/SCP/Blueprints/Sounds/PickItem1.PickItem1'

@@ -99,6 +99,20 @@ enum class EDocuments : uint8
 	sn
 };
 
+// Also not used
+UENUM(BlueprintType)
+enum class EItemTypes : uint8
+{
+	Consumable,
+	Effectless,
+	Electronics,
+	Equippable,
+	Headgear,
+	Meta,
+	Readable,
+	Wearable
+};
+
 // not being used right now
 UENUM(BlueprintType)
 enum class EItems : uint8

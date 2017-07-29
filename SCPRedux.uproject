@@ -13,5 +13,9 @@
 				"CoreUObject"
 			]
 		}
+	],
+	"TargetPlatforms": [
+		"WindowsNoEditor",
+		"HTML5"
 	]
 }

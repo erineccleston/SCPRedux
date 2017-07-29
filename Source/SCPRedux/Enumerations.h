@@ -199,13 +199,3 @@ enum class EItems : uint8
 	SuperBlueCandy,
 	SuperYellowCandy
 };
-
-/**
- * 
- */
-class SCPREDUX_API Enumerations
-{
-public:
-	Enumerations();
-	~Enumerations();
-};

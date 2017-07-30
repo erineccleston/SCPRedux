@@ -9,10 +9,14 @@
 **** CREDITS FOR NEW ASSETS *****************************
 
 	ErinPone
-		Nearly everything not listed below.
+		Player interaction, interactables, procedural generation...
+
+	Ra.h
+		Optimization, multiplayer, animation...
 
 	EternalError
 		SCP-330 related assets.
+
 
 	SCP-330 is based on "SCP-330 - Take Only Two" by "Dr Kondraki" (http://www.scp-wiki.net/scp-330)
 	SCP-523 is based on "SCP-523 - The Most Unhelpful Object On Earth" by "Achalk" (http://www.scp-wiki.net/scp-523)

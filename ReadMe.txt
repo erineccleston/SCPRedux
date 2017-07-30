@@ -8,7 +8,7 @@
 
 		    http://gamejolt.com/games/SCPUnreal/259576
 
-				   VERSION 0.4.0
+				   VERSION 0.5.0
 								
 
 
@@ -19,7 +19,8 @@ See "Credits.txt" for further details.
 This game's code is licensed under Creative Commons Attribution-ShareAlike 3.0 License.
 http://creativecommons.org/licenses/by-sa/3.0/
 
-Some of the assets are unable to be licensed under cca-sa 3.0. Due to this we wil be removing the content over time. 
+Some of the assets are unable to be licensed under cca-sa 3.0.
+Due to this we will be removing the content over time. 
 
 
 The source code of the game is available upon request.

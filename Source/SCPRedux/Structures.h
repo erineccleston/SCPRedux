@@ -4,6 +4,7 @@
 
 #include "Enumerations.h"
 #include "Engine/DataTable.h"
+#include "RoomBase.h"
 
 #include "CoreMinimal.h"
 #include "Structures.generated.h"
@@ -14,7 +15,7 @@ struct FRoomSpawn
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AActor> Room;
+	TSubclassOf<ARoomBase> Room;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FTransform Transform;
@@ -26,7 +27,7 @@ struct FRoomAttributes : public FTableRowBase
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AActor> Room;
+	TSubclassOf<ARoomBase> Room;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ERoomShapes Shape;
